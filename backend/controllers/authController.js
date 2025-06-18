@@ -70,14 +70,15 @@ const loginUser = async (req, res) => {
 
 const getUserProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password')
+        const user = await User.findById(req.user._id).select('-password')
         if (!user) {
             return res.status(404).json({ message: 'User not found' })
         }
-        res.join(user);
+        res.json(user);
     } catch (error) {
-        return res.status(400).json({ messsage: 'Server error', error: error.mssage })
+        return res.status(400).json({ message: 'Server error', error: error.message })
     }
 }
+
 
 module.exports = { registerUser, loginUser, getUserProfile };

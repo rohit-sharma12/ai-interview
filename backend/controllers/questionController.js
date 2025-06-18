@@ -1,7 +1,7 @@
 const Question = require('../models/Question')
 const Session = require('../models/Session')
 
-exports.addQuestionToSession = async () => {
+exports.addQuestionsToSession = async (req, res) => {
     try {
         const { sessionId, questions } = req.body;
 
@@ -15,7 +15,7 @@ exports.addQuestionToSession = async () => {
             return res.status(404).json({ message: 'Session not found' })
         }
 
-        const createdQuestions = await Question.imsertMany(
+        const createdQuestions = await Question.insertMany(
             questions.map((q) => ({
                 session: sessionId,
                 question: q.question,
@@ -33,40 +33,40 @@ exports.addQuestionToSession = async () => {
 }
 
 exports.togglePinQuestion = async () => {
-    try {
-        const question = await Question.findById(req.params.id);
+    // try {
+    //     const question = await Question.findById(req.params.id);
 
-        if (!question) {
-            return res
-                .status(404)
-                .json({ success: false, message: 'Question nnot found' })
-        }
+    //     if (!question) {
+    //         return res
+    //             .status(404)
+    //             .json({ success: false, message: 'Question nnot found' })
+    //     }
 
-        question.isPinned = !question.isPinned;
-        await question.save()
+    //     question.isPinned = !question.isPinned;
+    //     await question.save()
 
-        res.status(200).json({ sucess: true, question })
-    } catch (error) {
-        res.status(500).json({ message: 'Server Error' })
-    }
+    //     res.status(200).json({ sucess: true, question })
+    // } catch (error) {
+    //     res.status(500).json({ message: 'Server Error' })
+    // }
 }
 
 exports.updateQuestionNote = async () => {
-    try {
-        const { note } = req.body;
-        const question = await Question.findById(req.params.is)
+    // try {
+    //     const { note } = req.body;
+    //     const question = await Question.findById(req.params.is)
 
-        if (!question) {
-            return res
-                .status(404)
-                .json({ success: false, message: 'Question not found' })
-        }
+    //     if (!question) {
+    //         return res
+    //             .status(404)
+    //             .json({ success: false, message: 'Question not found' })
+    //     }
 
-        question.note = note || "";
-        await question.save();
+    //     question.note = note || "";
+    //     await question.save();
 
-        res.status(200).json({ sucess: true, question })
-    } catch (error) {
-        res.status(500).json({ message: 'Server Error' })
-    }
+    //     res.status(200).json({ sucess: true, question })
+    // } catch (error) {
+    //     res.status(500).json({ message: 'Server Error' })
+    // }
 }

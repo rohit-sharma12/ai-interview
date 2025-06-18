@@ -15,7 +15,7 @@ app.use(
     cors({
         origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['Content-Type', 'Authorizaton']
+        allowedHeaders: ['Content-Type', 'Authorization']
     })
 )
 
@@ -24,13 +24,13 @@ connectDB()
 app.use(express.json());
 
 app.use('/api/auth', authRoute);
-app.use('/api/session', sessionRoute);
-app.use('/api/question', questionRoute);
+app.use('/api/sessions', sessionRoute);
+app.use('/api/questions', questionRoute);
 
 app.use('/api/ai/generate-questions', protect, generateInterviewQuestions);
 app.use('/api/ai/generate-explanation', protect, generateConceptExplanation)
 
-app.use('/upload', express.static(path.join(__dirname, 'upload'), {}))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {}))
 
 const PORT = process.env.PORT || 3000;
 
