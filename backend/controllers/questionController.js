@@ -32,41 +32,41 @@ exports.addQuestionsToSession = async (req, res) => {
     }
 }
 
-exports.togglePinQuestion = async () => {
-    // try {
-    //     const question = await Question.findById(req.params.id);
+exports.togglePinQuestion = async (req,res) => {
+    try {
+        const question = await Question.findById(req.params.id);
 
-    //     if (!question) {
-    //         return res
-    //             .status(404)
-    //             .json({ success: false, message: 'Question nnot found' })
-    //     }
+        if (!question) {
+            return res
+                .status(404)
+                .json({ success: false, message: 'Question nnot found' })
+        }
 
-    //     question.isPinned = !question.isPinned;
-    //     await question.save()
+        question.isPinned = !question.isPinned;
+        await question.save()
 
-    //     res.status(200).json({ sucess: true, question })
-    // } catch (error) {
-    //     res.status(500).json({ message: 'Server Error' })
-    // }
+        res.status(200).json({ sucess: true, question })
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' })
+    }
 }
 
-exports.updateQuestionNote = async () => {
-    // try {
-    //     const { note } = req.body;
-    //     const question = await Question.findById(req.params.is)
+exports.updateQuestionNote = async (req, res) => {
+    try {
+        const { note } = req.body;
+        const question = await Question.findById(req.params.id)
 
-    //     if (!question) {
-    //         return res
-    //             .status(404)
-    //             .json({ success: false, message: 'Question not found' })
-    //     }
+        if (!question) {
+            return res
+                .status(404)
+                .json({ success: false, message: 'Question not found' })
+        }
 
-    //     question.note = note || "";
-    //     await question.save();
+        question.note = note || "";
+        await question.save();
 
-    //     res.status(200).json({ sucess: true, question })
-    // } catch (error) {
-    //     res.status(500).json({ message: 'Server Error' })
-    // }
+        res.status(200).json({ sucess: true, question })
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' })
+    }
 }

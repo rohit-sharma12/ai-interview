@@ -12,9 +12,9 @@ const SummaryCard = ({
   onDelete,
 }) => {
   return (
-    <div className='bg-white border border-gray-300/40 rounded-xl p-2 overflow-hidden cursor-pointer hover:shadow-xl shadow-gray-100 relative group' onClick={onSelect}>
+    <div className='bg-white border border-gray-300/50 rounded-xl p-2 overflow-hidden cursor-pointer hover:shadow-xl shadow-gray-100 relative group' onClick={onSelect}>
       <div className='rounded-lg p-4 cursor-pointer relative'
-        style={{ background: colors}}
+        style={{ background: colors.bgcolor}}
       >
         <div className='flex items-center'>
           <div className='flex-shrink-0 w-12 h-12 bg-white rounded-md flex items-center justify-center mr-4'>
