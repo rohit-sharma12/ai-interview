@@ -13,7 +13,7 @@ const ProfileInfoCard = () => {
     }
     return (
         user && (
-            <div className='flex items-center gap-8'>
+            <div className='flex items-center gap-5 mr-3'>
                 <img src={user.ProfileImageUrl} alt="Profile" className='w-11 h-11 bg-gray-300 rounded-full' />
                 <div>
                     <button className='px-4 py-3 rounded-xl font-bold bg-amber-500 text-white text-sm cursor-pointer hover: px-4.2' onClick={handleLogout}>
